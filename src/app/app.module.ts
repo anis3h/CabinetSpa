@@ -9,12 +9,13 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { PatientComponent } from './patient/patient.component';
+import { PatientComponent } from './modules/patient/patient.component';
 // Imported Syncfusion button module from buttons package
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { GridModule, PageService, ToolbarService } from '@syncfusion/ej2-angular-grids';
 import { Configuration } from './configurations/app.constants';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PatientService } from './shared/services/patient.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ButtonModule,
     GridModule
   ],
-  providers: [Configuration],
+  providers: [
+    PageService,
+    ToolbarService,
+    Configuration,
+    PatientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
