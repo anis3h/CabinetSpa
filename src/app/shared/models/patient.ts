@@ -4,4 +4,5 @@ interface Patient {
   name: string;
   firstName: string;
   dateOfBirth: Date;
+  adresse: string;
 }

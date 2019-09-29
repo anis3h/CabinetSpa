@@ -1,10 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Configuration} from '../../configurations/app.constants';
-import { PatientService } from 'src/app/shared/services/patient.service';
-import { GridComponent, EditSettingsModel, ToolbarItems } from '@syncfusion/ej2-angular-grids';
-import { DataManager, WebApiAdaptor, RemoteSaveAdaptor } from '@syncfusion/ej2-data';
-import {TranslateService} from '@ngx-translate/core';
+import { PageService, GridComponent, EditSettingsModel, ToolbarService, EditService , ToolbarItems } from '@syncfusion/ej2-angular-grids';
+import { DataManager, UrlAdaptor} from '@syncfusion/ej2-data';
+//import {TranslateService} from '@ngx-translate/core';
 
 // ToDO Patient Module anlegen
 @Component({
@@ -15,6 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class PatientComponent implements OnInit {
   public patients: any;
   public pageSettings: Object;
+  // tslint:disable-next-line:ban-types
   public selectOptions: Object;
   public data: DataManager;
   public value: any;
@@ -22,30 +21,32 @@ export class PatientComponent implements OnInit {
   public toolbar: ToolbarItems[];
   public initialPage: Object;
   public dateTest: Date;
+  private apiUrl: string = 'https://localhost:44393';
   locale: string;
-  constructor(http: HttpClient, public patientService: PatientService, private translateService: TranslateService) {
-  }
+  @ViewChild('grid', { static: true })
+  public grid: GridComponent;
+  constructor(http: HttpClient) {
 
-  ngOnInit() {
-    this.locale = this.translateService.defaultLang;
-    this.loadPatients();
-    this.dateTest = new Date();
-    this.initialPage = { pageSizes: true, pageCount: 4 };
-    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-    // this.data = new DataManager({
-    //   json: this.patients,
-    //   adaptor: new RemoteSaveAdaptor(),
-      // insertUrl: '/Home/Insert',
-      // updateUrl: '/Home/Update',
-      // removeUrl: '/Home/Delete'
-    //  });
-   // this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
   }
-   loadPatients() {
-     this.patientService.GetPatients().subscribe(async result => {
-         this.patients = result;
-       }, error => console.error(error));
+    async ngOnInit() {
+   // this.locale = this.translateService.defaultLang;
+   // await this.loadPatients();
+    this.initialPage = { pageSize: 12, pageCount: 4 };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog'};
+    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search'];
+
+    this.data = new DataManager({
+        url: this.apiUrl + '/api/Patient/Patients',
+        insertUrl: this.apiUrl + '/api/Patient/Insert',
+        removeUrl: this.apiUrl + '/api/Patient/Delete',
+        updateUrl: this.apiUrl + '/api/Patient/Update',
+        adaptor: new UrlAdaptor });
   }
+  //  async loadPatients() {
+  //    this.patient2Service.GetPatients().subscribe(async result => {
+  //        this.patients = result;
+  //      }, error => console.error(error));
+  // }
 }
 
 

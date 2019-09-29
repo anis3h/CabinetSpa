@@ -17,11 +17,11 @@ export class PatientService {
   private urlPatientService: string;
 
     // Http Headers
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+  // httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  // };
 
   // GET
   GetPatients(): Observable<Patient[]> {
@@ -32,6 +32,15 @@ export class PatientService {
     );
   }
 
+  // add {
+
+  // }
+  // edit {
+
+  // }
+  // delete {
+
+  // }
   // POST
   // CreateBug(data): Observable<Bug> {
   //   return this.http.post<Bug>(this.baseurl + '/bugtracking/', JSON.stringify(data), this.httpOptions)
