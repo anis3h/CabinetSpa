@@ -2,19 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PatientComponent } from './modules/patient/patient.component';
+import { AppRoutingModule } from './app-routing.module';
 // Imported Syncfusion button module from buttons package
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { GridModule, PageService, ToolbarService, EditService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
-import { Configuration } from './configurations/app.constants';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { InformationsModule } from './modules/informations/informations.module';
+import { ScheduleModule } from './modules/schedule/schedule.module';
+
+import { Configuration } from './configurations/app.constants';
 import { PatientService } from './shared/services/patient.service';
+import { AppComponent } from './app.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { HomeComponent } from './home/home.component';
 //import { Patient2Service } from './shared/services/patient2.service';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -31,8 +33,6 @@ import { registerLocaleData } from '@angular/common';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     PatientComponent
   ],
   imports: [
@@ -40,12 +40,10 @@ import { registerLocaleData } from '@angular/common';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'patient', component: PatientComponent },
-    ]),
+    AppRoutingModule,
+    DashboardModule,
+    InformationsModule,
+    ScheduleModule,
     //Registering EJ2 button module
     ButtonModule,
     GridModule,

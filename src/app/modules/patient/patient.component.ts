@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PageService, GridComponent, EditSettingsModel, ToolbarService, EditService , ToolbarItems } from '@syncfusion/ej2-angular-grids';
+import { Router } from '@angular/router';
+import { PageService, GridComponent, EditSettingsModel, ToolbarService, EditService , ToolbarItems, RowSelectEventArgs } from '@syncfusion/ej2-angular-grids';
 import { DataManager, UrlAdaptor} from '@syncfusion/ej2-data';
 //import {TranslateService} from '@ngx-translate/core';
 
@@ -11,6 +12,7 @@ import { DataManager, UrlAdaptor} from '@syncfusion/ej2-data';
 })
 
 export class PatientComponent implements OnInit {
+
   public patients: any;
   public pageSettings: Object;
   // tslint:disable-next-line:ban-types
@@ -18,24 +20,26 @@ export class PatientComponent implements OnInit {
   public data: DataManager;
   public value: any;
   public editSettings: EditSettingsModel;
-  public toolbar: ToolbarItems[];
+  public toolbar: ToolbarItems[] | Object;
   public initialPage: Object;
   public dateTest: Date;
   private apiUrl: string = 'https://localhost:44393';
   locale: string;
   @ViewChild('grid', { static: true })
   public grid: GridComponent;
-  constructor(http: HttpClient) {
+
+  constructor(http: HttpClient, private router: Router,) {
 
   }
-    async ngOnInit() {
+  
+  async ngOnInit() {
    // this.locale = this.translateService.defaultLang;
    // await this.loadPatients();
     this.initialPage = { pageSize: 12, pageCount: 4 };
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog'};
-    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search'];
+    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', { text: 'Informations', tooltipText: 'Patient Informations', prefixIcon: 'e-expand', id: 'editInformations' }, 'Search'];
 
-    this.data = new DataManager({
+    this.data = new DataManager({ 
         url: this.apiUrl + '/api/Patient/Patients',
         insertUrl: this.apiUrl + '/api/Patient/Insert',
         removeUrl: this.apiUrl + '/api/Patient/Delete',
@@ -47,6 +51,17 @@ export class PatientComponent implements OnInit {
   //        this.patients = result;
   //      }, error => console.error(error));
   // }
+
+  rowSelected(args: RowSelectEventArgs) {
+    let selectedrowindex: number[] = this.grid.getSelectedRowIndexes();  // Get the selected row indexes.
+     // To alert the selected row indexes.
+    var selectedrecords: Patient[] = this.grid.getSelectedRecords() as Patient[]; 
+    let test = selectedrecords[0];
+    //alert(selectedrecords[0] as Patient);
+
+    console.log(selectedrecords[0].id);
+    this.router.navigate([`/informations/${4}`]);    
+  }
 }
 
 

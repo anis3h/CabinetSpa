@@ -1,7 +1,7 @@
 <div class="container mt-5">
 <div class="row">
-<div class="container mt-5">
-  <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar'>
+<div class="container">
+  <ejs-grid #grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar' (rowSelected)='rowSelected($event)'>
   <!-- <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings'  allowSorting= 'true'> -->
   <e-columns>
     <e-column field='Id' headerText='Patient ID' [visible]='false' isPrimaryKey='true' textAlign='Right' width='100'></e-column>
@@ -17,5 +17,3 @@
   <p>{{ dateTest | date: 'short':undefined:locale }}</p>
 </div> -->
 </div>
-
-
