@@ -16,14 +16,16 @@ import { Configuration } from './configurations/app.constants';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PatientService } from './shared/services/patient.service';
 //import { Patient2Service } from './shared/services/patient2.service';
-// import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+//import ngx-translate and the http loader
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
-// import localeFr from '@angular/common/locales/fr';
-// import localeEn from '@angular/common/locales/en';
-// import localeDe from '@angular/common/locales/de';
+ import localeFr from '@angular/common/locales/fr';
+ import localeEn from '@angular/common/locales/en';
+ import localeDe from '@angular/common/locales/de';
+import { ExtendDatePipe } from './modules/patient/extendedDatePipe';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { registerLocaleData } from '@angular/common';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PatientComponent
+    PatientComponent,
+    ExtendDatePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,13 +52,16 @@ import { registerLocaleData } from '@angular/common';
     //Registering EJ2 button module
     ButtonModule,
     GridModule,
-    // TranslateModule.forRoot({
-    //   loader: {
-    //       provide: TranslateLoader,
-    //       useFactory: HttpLoaderFactory,
-    //       deps: [HttpClient]
-    //   }
-  //})
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
+  ],
+  exports: [
+    TranslateModule
   ],
   providers: [
     PageService,
@@ -63,15 +69,18 @@ import { registerLocaleData } from '@angular/common';
     Configuration,
     PatientService,
     EditService,
+    TranslateService,
     SortService, FilterService, GroupService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {
-   // registerLocaleData(localeDe, 'de');
+    registerLocaleData(localeDe, 'de');
+    registerLocaleData(localeEn, 'en');
+    registerLocaleData(localeFr, 'fr');
   }
 }
-// export function HttpLoaderFactory(http: HttpClient) {
-//   return new TranslateHttpLoader(http);
-// }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

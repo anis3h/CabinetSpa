@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PageService, GridComponent, EditSettingsModel, ToolbarService, EditService , ToolbarItems } from '@syncfusion/ej2-angular-grids';
 import { DataManager, UrlAdaptor} from '@syncfusion/ej2-data';
-//import {TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 // ToDO Patient Module anlegen
 @Component({
@@ -25,11 +25,14 @@ export class PatientComponent implements OnInit {
   locale: string;
   @ViewChild('grid', { static: true })
   public grid: GridComponent;
-  constructor(http: HttpClient) {
+
+  constructor(http: HttpClient, public translateService: TranslateService) {
 
   }
     async ngOnInit() {
-   // this.locale = this.translateService.defaultLang;
+      this.locale = "de";
+      this.dateTest  =new Date() ;
+
    // await this.loadPatients();
     this.initialPage = { pageSize: 12, pageCount: 4 };
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog'};

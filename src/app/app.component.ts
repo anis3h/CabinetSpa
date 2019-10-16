@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import {TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
-    //translate.setDefaultLang('de');
+  constructor(private translate: TranslateService) {
+     translate.setDefaultLang('de');
   }
   title = 'CabinetAngular';
 }
