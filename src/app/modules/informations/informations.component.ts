@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { InformationsService }  from '../../shared/services/informations/informations.service';
+import { Identifiers } from '@angular/compiler';
 
 @Component({
   selector: 'app-informations',
@@ -12,7 +13,6 @@ import { InformationsService }  from '../../shared/services/informations/informa
 export class InformationsComponent implements OnInit {
 
   patient: Patient;
-
   constructor(
     private informationsService: InformationsService,
     private route: ActivatedRoute) { }

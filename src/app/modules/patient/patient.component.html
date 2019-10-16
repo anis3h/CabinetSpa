@@ -1,14 +1,9 @@
 
 <div class="container mt-5">
 <div class="row">
-<<<<<<< HEAD
-
-   <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar'>
-=======
 <div class="container">
-  <ejs-grid #grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar' (rowSelected)='rowSelected($event)'>
+  <ejs-grid #grid [dataSource]='data' allowPaging= 'true' (toolbarClick)='toolbarClickPatient($event)' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar'>
   <!-- <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings'  allowSorting= 'true'> -->
->>>>>>> 3ef5f35375d094f1dff5f3b3328bb4efd4ce771e
   <e-columns>
     <e-column field='Id' headerText='Patient ID' [visible]='false' isPrimaryKey='true' textAlign='Right' width='100'></e-column>
     <e-column field='FileNumber'  headerText="Fiche numéro" type="number" textAlign="Center" width="120"></e-column>
@@ -23,9 +18,3 @@
     <p>Test {{ dateTest | testDate}}</p>
   </div> -->
 </div>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 3ef5f35375d094f1dff5f3b3328bb4efd4ce771e

@@ -35,14 +35,11 @@ import { ExtendDatePipe } from './modules/patient/extendedDatePipe';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-<<<<<<< HEAD
-    CounterComponent,
-    FetchDataComponent,
+    // CounterComponent,
+    // FetchDataComponent,
     PatientComponent,
-    ExtendDatePipe
-=======
+    ExtendDatePipe,
     PatientComponent
->>>>>>> 3ef5f35375d094f1dff5f3b3328bb4efd4ce771e
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

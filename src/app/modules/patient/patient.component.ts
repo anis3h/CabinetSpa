@@ -27,34 +27,30 @@ export class PatientComponent implements OnInit {
   locale: string;
   @ViewChild('grid', { static: true })
   public grid: GridComponent;
-
-<<<<<<< HEAD
-  constructor(http: HttpClient, public translateService: TranslateService) {
-
-  }
-    async ngOnInit() {
-      this.locale = "de";
-      this.dateTest  =new Date() ;
-
-=======
+  private patient: any;
   constructor(http: HttpClient, private router: Router,) {
 
   }
-  
+
   async ngOnInit() {
    // this.locale = this.translateService.defaultLang;
->>>>>>> 3ef5f35375d094f1dff5f3b3328bb4efd4ce771e
    // await this.loadPatients();
     this.initialPage = { pageSize: 12, pageCount: 4 };
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog'};
     this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', { text: 'Informations', tooltipText: 'Patient Informations', prefixIcon: 'e-expand', id: 'editInformations' }, 'Search'];
 
-    this.data = new DataManager({ 
+    this.data = new DataManager({
         url: this.apiUrl + '/api/Patient/Patients',
         insertUrl: this.apiUrl + '/api/Patient/Insert',
         removeUrl: this.apiUrl + '/api/Patient/Delete',
         updateUrl: this.apiUrl + '/api/Patient/Update',
         adaptor: new UrlAdaptor });
+  }
+  toolbarClickPatient(e){
+    if (e.item.id === 'editInformations') {
+      var rowInformation = this.grid.getSelectedRecords();
+      var patient: any = rowInformation[0];
+      this.router.navigate([`/informations/${patient.Id}`]);
   }
   //  async loadPatients() {
   //    this.patient2Service.GetPatients().subscribe(async result => {
@@ -62,15 +58,20 @@ export class PatientComponent implements OnInit {
   //      }, error => console.error(error));
   // }
 
-  rowSelected(args: RowSelectEventArgs) {
-    let selectedrowindex: number[] = this.grid.getSelectedRowIndexes();  // Get the selected row indexes.
-     // To alert the selected row indexes.
-    var selectedrecords: Patient[] = this.grid.getSelectedRecords() as Patient[]; 
-    let test = selectedrecords[0];
-    //alert(selectedrecords[0] as Patient);
+  // if (e.item.id === 'editFamily') {
+  //     var gridFamily = document.getElementById("Grid").ej2_instances[0];
+  //     var rowFamily = gridFamily.getSelectedRecords();
 
-    console.log(selectedrecords[0].id);
-    this.router.navigate([`/informations/${4}`]);    
+  //     window.location.href = 'Family/Index' + '/' + rowFamily[0].Id;
+  // }
+
+  // if (e.item.id === 'editConsultations') {
+
+  //     var gridConsultations = document.getElementById("Grid").ej2_instances[0];
+  //     var rowConsultations = gridConsultations.getSelectedRecords();
+
+  //     window.location.href = 'Consultations/Index' + '/' + rowConsultations[0].Id;
+  // }
   }
 }
 
