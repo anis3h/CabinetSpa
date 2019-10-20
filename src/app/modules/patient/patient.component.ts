@@ -11,7 +11,6 @@ import {
   RowSelectEventArgs
 } from "@syncfusion/ej2-angular-grids";
 import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
-import { TranslateService } from "@ngx-translate/core";
 
 // ToDO Patient Module anlegen
 @Component({
@@ -37,7 +36,6 @@ export class PatientComponent implements OnInit {
   constructor(http: HttpClient, private router: Router) {}
 
   async ngOnInit() {
-    // this.locale = this.translateService.defaultLang;
     // await this.loadPatients();
     this.initialPage = { pageSize: 12, pageCount: 4 };
     this.editSettings = {
@@ -58,6 +56,12 @@ export class PatientComponent implements OnInit {
         prefixIcon: "e-expand",
         id: "editInformations"
       },
+      {
+        text: "Family",
+        tooltipText: "Patient family",
+        prefixIcon: "e-expand",
+        id: "editFamily"
+      },
       "Search"
     ];
 
@@ -74,6 +78,11 @@ export class PatientComponent implements OnInit {
       var rowInformation = this.grid.getSelectedRecords();
       var patient: any = rowInformation[0];
       this.router.navigate([`/informations/${patient.id}`]);
+    }
+    if (e.item.id === "editFamily") {
+      var rowInformation = this.grid.getSelectedRecords();
+      var patient: any = rowInformation[0];
+      this.router.navigate([`/family/${patient.id}`]);
     }
     //  async loadPatients() {
     //    this.patient2Service.GetPatients().subscribe(async result => {

@@ -1,0 +1,16 @@
+<div>
+  <!-- <div *ngIf="familyPatient">
+    <h2>Informations:</h2>
+    <div><span>id: </span>{{ familyPatient.patient.id }}</div>
+  </div> -->
+
+  <div>
+    <div class="col-lg-12 control-section">
+      <div class="content-wrapper"></div>
+      <app-patient-partial
+        *ngIf="familyPatient && familyPatient.patient"
+        [patient]="familyPatient.patient"
+      ></app-patient-partial>
+    </div>
+  </div>
+</div>

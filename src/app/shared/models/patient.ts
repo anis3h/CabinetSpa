@@ -1,4 +1,4 @@
-interface Patient {
+class Patient {
   id: number;
   fileNumber: number;
   name: string;

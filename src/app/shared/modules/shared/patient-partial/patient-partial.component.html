@@ -1,0 +1,49 @@
+<div class="row" *ngIf="patient">
+  <div>
+    <input required="false" type="hidden" [ngModel]="patient.id" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+    <b>Patient</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+    <ejs-textbox
+      placeholder="Fiche Numéro"
+      floatLabelType="Auto"
+      [ngModel]="patient.fileNumber"
+    >
+    </ejs-textbox>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+    <ejs-textbox
+      placeholder="Nom"
+      floatLabelType="Auto"
+      [ngModel]="patient.name"
+    >
+    </ejs-textbox>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+    <ejs-textbox
+      placeholder="Prenom"
+      floatLabelType="Auto"
+      [ngModel]="patient.firstName"
+    >
+    </ejs-textbox>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+    <ejs-textbox
+      placeholder="Date de Naissance"
+      floatLabelType="Auto"
+      type="Date"
+      [ngModel]="patient.dateOfBirth"
+    >
+    </ejs-textbox>
+  </div>
+</div>

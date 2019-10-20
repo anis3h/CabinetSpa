@@ -10,4 +10,6 @@ export class Configuration {
   //public informationsUrl = 'https://localhost:44372';
   public informationsService =
     this.server + this.apiUrl + "/Informations/Information";
+
+  public familyService = this.server + this.apiUrl + "/family/family";
 }
