@@ -7,7 +7,11 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class PatientPartialComponent implements OnInit {
   @Input() patient: Patient;
+  patientTest: Date;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.patientTest = this.patient;
+    this.patientTest = this.patient.test;
+  }
 }
