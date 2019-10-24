@@ -26,12 +26,7 @@ import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { HomeComponent } from "./home/home.component";
 //import { Patient2Service } from './shared/services/patient2.service';
 //import ngx-translate and the http loader
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateService
-} from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+
 import { HttpClient } from "@angular/common/http";
 import { registerLocaleData } from "@angular/common";
 import { ExtendDatePipe } from "./modules/patient/extendedDatePipe";
@@ -64,23 +59,15 @@ import { SharedModule } from "./shared/modules/shared/shared.module";
     ButtonModule,
     GridModule,
     TextBoxModule,
-    SharedModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    SharedModule
   ],
-  exports: [TranslateModule],
+  exports: [],
   providers: [
     PageService,
     ToolbarService,
     Configuration,
     PatientService,
     EditService,
-    TranslateService,
     SortService,
     FilterService,
     GroupService
@@ -90,6 +77,4 @@ import { SharedModule } from "./shared/modules/shared/shared.module";
 export class AppModule {
   constructor() {}
 }
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+export function HttpLoaderFactory(http: HttpClient) {}
