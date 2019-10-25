@@ -1,20 +1,62 @@
-
 <div class="container mt-5">
-<div class="row">
-<div class="container">
-  <ejs-grid #grid [dataSource]='data' allowPaging= 'true' (toolbarClick)='toolbarClickPatient($event)' [pageSettings]='initialPage' [editSettings]='editSettings' [toolbar]='toolbar'>
-  <!-- <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings'  allowSorting= 'true'> -->
-  <e-columns>
-    <e-column field='id' headerText='Patient ID' [visible]='false' isPrimaryKey='true' textAlign='Right' width='100'></e-column>
-    <e-column field='fileNumber'  headerText="Fiche numéro" type="number" textAlign="Center" width="120"></e-column>
-    <e-column field='name' headerText="Nom" textAlign="Center" width="120"></e-column>
-    <e-column field='firstName'  headerText="Prenom" textAlign="Center" width="120"></e-column>
-    <e-column field='dateOfBirth'  headerText="Date de naissance" width="130" textAlign="Center" editType="datepickeredit" ></e-column>
-    <e-column field='adresse' headerText="Ville" textAlign="Center" width="120"></e-column>
-  </e-columns>
-</ejs-grid>
-</div>
-<!-- <div class="row" mt-5>
+  <div class="row">
+    <div class="container">
+      <ejs-grid
+        #grid
+        [dataSource]="data"
+        allowPaging="true"
+        (toolbarClick)="toolbarClickPatient($event)"
+        [pageSettings]="initialPage"
+        [editSettings]="editSettings"
+        [toolbar]="toolbar"
+      >
+        <!-- <ejs-grid [dataSource]='data' allowPaging= 'true' [pageSettings]='initialPage' [editSettings]='editSettings'  allowSorting= 'true'> -->
+        <e-columns>
+          <e-column
+            field="id"
+            headerText="Patient ID"
+            [visible]="false"
+            isPrimaryKey="true"
+            textAlign="Right"
+            width="100"
+          ></e-column>
+          <e-column
+            field="fileNumber"
+            headerText="Fiche numéro"
+            type="number"
+            textAlign="Center"
+            width="120"
+          ></e-column>
+          <e-column
+            field="name"
+            headerText="Nom"
+            textAlign="Center"
+            width="120"
+          ></e-column>
+          <e-column
+            field="firstName"
+            headerText="Prenom"
+            textAlign="Center"
+            width="120"
+          ></e-column>
+          <e-column
+            field="dateOfBirth"
+            headerText="Date de naissance"
+            width="130"
+            textAlign="Center"
+            editType="datepickeredit"
+          ></e-column>
+          <e-column
+            field="adresse"
+            headerText="Ville"
+            textAlign="Center"
+            width="120"
+          ></e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+    <!-- <div class="row" mt-5>
     <p>Test {{ dateTest | testDate}}</p>
   </div> -->
+  </div>
 </div>

@@ -12,9 +12,8 @@ export class FamilyComponent implements OnInit {
 
   constructor(
     private familyService: FamilyService,
-    private route: ActivatedRoute
-  ) // @Inject("sourceFiles") private sourceFiles: any
-  {
+    private route: ActivatedRoute // @Inject("sourceFiles") private sourceFiles: any
+  ) {
     // sourceFiles.files = ["family.component.scss"];
   }
 

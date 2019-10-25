@@ -11,6 +11,7 @@
 <div class="row">
   <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
     <ejs-textbox
+      cssClass="e-outline"
       placeholder="Fiche Numéro"
       floatLabelType="Auto"
       [ngModel]="patient.fileNumber"
@@ -21,6 +22,7 @@
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
     <ejs-textbox
+      cssClass="e-outline"
       placeholder="Nom"
       floatLabelType="Auto"
       [ngModel]="patient.name"
@@ -29,6 +31,7 @@
   </div>
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
     <ejs-textbox
+      cssClass="e-outline"
       placeholder="Prenom"
       floatLabelType="Auto"
       [ngModel]="patient.firstName"
@@ -38,11 +41,12 @@
 </div>
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-      <ejs-textbox
+    <ejs-textbox
+      cssClass="e-outline"
       placeholder="Date de Naissance"
       floatLabelType="Auto"
-      [ngModel]="patient.dateOfBirth | date:'yyyy-MM-dd'"   
-      type="date"  
+      [ngModel]="patient.dateOfBirth | date: 'yyyy-MM-dd'"
+      type="date"
     >
     </ejs-textbox>
   </div>
