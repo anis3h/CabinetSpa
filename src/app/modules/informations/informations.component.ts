@@ -11,7 +11,11 @@ import { Identifiers } from "@angular/compiler";
   styleUrls: ["./informations.component.scss"]
 })
 export class InformationsComponent implements OnInit {
-  patient: Patient;
+
+  public patientInformation: PatientInformation;
+  public pregnancyTypeData: string[] = ['Aterm', 'Prématurité', 'Gemulaire', 'Triplé'];
+  public selectedPregnancyType: string;
+
   constructor(
     private informationsService: InformationsService,
     private route: ActivatedRoute
@@ -27,12 +31,16 @@ export class InformationsComponent implements OnInit {
 
     this.informationsService.getPatient(id).subscribe(
       async result => {
-        this.patient = result;
+        this.patientInformation = result;
       },
       error => console.error(error)
     );
 
     // this.informationsService.getPatient(id)
     //   .subscribe(patient => this.patient = patient);
+  }
+
+  onPregnancyTypeDropDownListChange(e) {
+    this.selectedPregnancyType = e.value;
   }
 }

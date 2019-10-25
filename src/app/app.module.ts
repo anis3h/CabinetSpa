@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PatientComponent } from "./modules/patient/patient.component";
 import { AppRoutingModule } from "./app-routing.module";
 // Imported Syncfusion button module from buttons package
+import { TextBoxModule } from "@syncfusion/ej2-angular-inputs";
 import { ButtonModule } from "@syncfusion/ej2-angular-buttons";
 import {
   GridModule,
@@ -31,7 +32,6 @@ import { HttpClient } from "@angular/common/http";
 import { registerLocaleData } from "@angular/common";
 import { ExtendDatePipe } from "./modules/patient/extendedDatePipe";
 import { FamilyModule } from "./modules/family/family.module";
-import { TextBoxModule } from "@syncfusion/ej2-angular-inputs";
 import { SharedModule } from "./shared/modules/shared/shared.module";
 
 @NgModule({

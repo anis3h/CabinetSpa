@@ -18,11 +18,11 @@ export class InformationsService {
     this.informationsServiceUrl = configuration.informationsService;
   }
 
-  getPatient(id: number): Observable<Patient> {
+  getPatient(id: number): Observable<PatientInformation> {
     const url = `${this.informationsServiceUrl}/${id}`;
-    return this.http.get<Patient>(url).pipe(
-      tap(_ => console.log(`getPatient id=${id}`)),
-      catchError(this.handleError<Patient>(`getPatient id=${id}`))
+    return this.http.get<PatientInformation>(url).pipe(
+      tap(_ => console.log(`getPatientWithInformation id=${id}`)),
+      catchError(this.handleError<PatientInformation>(`getPatientWithInformation id=${id}`))
     );
   }
 
