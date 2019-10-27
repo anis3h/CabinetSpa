@@ -34,6 +34,8 @@ import { ExtendDatePipe } from "./modules/patient/extendedDatePipe";
 import { FamilyModule } from "./modules/family/family.module";
 import { SharedModule } from "./shared/modules/shared/shared.module";
 
+import { OAuthModule } from "angular-oauth2-oidc";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,8 @@ import { SharedModule } from "./shared/modules/shared/shared.module";
     ButtonModule,
     GridModule,
     TextBoxModule,
-    SharedModule
+    SharedModule,
+    OAuthModule.forRoot()
   ],
   exports: [],
   providers: [
