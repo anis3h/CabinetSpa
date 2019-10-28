@@ -45,7 +45,8 @@ export class AppComponent {
     });
 
     this.oauthService.responseType = "id_token token";
-    this.oauthService.scope = "openid email profile";
+    this.oauthService.scope =
+      "openid email profile api://c39e1d04-10f1-4c56-985e-b9317d055e95/Patients";
 
     this.oauthService.loginUrl =
       "https://login.microsoftonline.com/" +
