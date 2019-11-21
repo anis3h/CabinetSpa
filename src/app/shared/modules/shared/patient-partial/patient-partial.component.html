@@ -1,6 +1,6 @@
 <div class="row" *ngIf="patient">
   <div>
-    <input required="false" type="hidden" [ngModel]="patient.id" />
+    <input type="hidden" [(ngModel)]="patient.id" name="patientId"/>
   </div>
 </div>
 <div class="row">
@@ -11,10 +11,11 @@
 <div class="row">
   <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
     <ejs-textbox
+      name="fileNumber"
       cssClass="e-outline"
       placeholder="Fiche Numéro"
       floatLabelType="Auto"
-      [ngModel]="patient.fileNumber"
+      [(ngModel)]="patient.fileNumber"
     >
     </ejs-textbox>
   </div>
@@ -22,32 +23,35 @@
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
     <ejs-textbox
+      name="name"
       cssClass="e-outline"
       placeholder="Nom"
       floatLabelType="Auto"
-      [ngModel]="patient.name"
+      [(ngModel)]="patient.name"
     >
     </ejs-textbox>
   </div>
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
     <ejs-textbox
+      name="firstName"
       cssClass="e-outline"
       placeholder="Prenom"
       floatLabelType="Auto"
-      [ngModel]="patient.firstName"
+      [(ngModel)]="patient.firstName"
     >
     </ejs-textbox>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-    <ejs-textbox
+    <!-- <ejs-textbox
+      name="dateOfBirth"
       cssClass="e-outline"
       placeholder="Date de Naissance"
       floatLabelType="Auto"
-      [ngModel]="patient.dateOfBirth | date: 'yyyy-MM-dd'"
+      [(ngModel)]="patient.dateOfBirth | date: 'yyyy-MM-dd'"
       type="date"
     >
-    </ejs-textbox>
+    </ejs-textbox> -->
   </div>
 </div>

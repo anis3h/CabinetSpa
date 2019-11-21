@@ -9,6 +9,7 @@ import { Configuration } from "src/app/configurations/app.constants";
   providedIn: "root"
 })
 export class InformationsService {
+
   private informationsServiceUrl;
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -23,6 +24,13 @@ export class InformationsService {
     return this.http.get<PatientInformation>(url).pipe(
       tap(_ => console.log(`getPatientWithInformation id=${id}`)),
       catchError(this.handleError<PatientInformation>(`getPatientWithInformation id=${id}`))
+    );
+  }
+
+  updatePatient(patient: PatientInformation) : Observable<any> {
+    return this.http.post(this.informationsServiceUrl + 's', patient, this.httpOptions).pipe(
+      tap(_ => console.log(`updatePatient id=${patient.patient.id}`)),
+      catchError(this.handleError<any>('updatePatient'))
     );
   }
 

@@ -4,6 +4,7 @@ import { Location } from "@angular/common";
 
 import { InformationsService } from "../../shared/services/informations/informations.service";
 import { Identifiers } from "@angular/compiler";
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
   selector: "app-informations",
@@ -14,7 +15,11 @@ export class InformationsComponent implements OnInit {
 
   public patientInformation: PatientInformation;
   public pregnancyTypeData: string[] = ['Aterm', 'Prématurité', 'Gemulaire', 'Triplé'];
+  public positionTypeData: string[] = ['Sommet', 'Siège'];
+  public allaitementData: string[] = ['Maternelle', 'Exclusif', 'Mixte', 'Artificiel'];
   public selectedPregnancyType: string;
+  public selectedPositionType: string;
+  public selectedAllaitemen: string;
 
   constructor(
     private informationsService: InformationsService,
@@ -22,7 +27,7 @@ export class InformationsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getPatient();
+    this.getPatient(); 
   }
 
   getPatient(): void {
@@ -32,6 +37,8 @@ export class InformationsComponent implements OnInit {
     this.informationsService.getPatient(id).subscribe(
       async result => {
         this.patientInformation = result;
+        this.patientInformation.born = {} as Born;
+        this.patientInformation.pregnancy = {} as Pregnancy;
       },
       error => console.error(error)
     );
@@ -40,7 +47,22 @@ export class InformationsComponent implements OnInit {
     //   .subscribe(patient => this.patient = patient);
   }
 
+  onSubmit(){
+    var test = this.patientInformation;
+    this.informationsService.updatePatient(this.patientInformation).subscribe(
+      () => console.log("patient gespeichert")
+    );
+  }
+
   onPregnancyTypeDropDownListChange(e) {
     this.selectedPregnancyType = e.value;
+  }
+
+  onPositionTypeDropDownListChange(e) {
+    this.selectedPositionType = e.value;
+  }
+
+  onAllaitementDropDownListChange(e){
+    this.selectedAllaitemen = e.value;
   }
 }

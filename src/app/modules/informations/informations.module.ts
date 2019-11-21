@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { SharedModule } from "src/app/shared/modules/shared/shared.module";
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { TextBoxModule } from "@syncfusion/ej2-angular-inputs";
+import { CheckBoxModule, ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 import { InformationsComponent } from './informations.component';
 
@@ -14,7 +15,9 @@ import { InformationsComponent } from './informations.component';
     SharedModule,
     FormsModule,
     DropDownListModule,
-    TextBoxModule
+    TextBoxModule,
+    CheckBoxModule,
+    ButtonModule
   ]
 })
 export class InformationsModule { }

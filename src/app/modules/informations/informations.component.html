@@ -1,80 +1,128 @@
 <div *ngIf="patientInformation">
-  <div class="row mt-3">
-    <div class="col-lg-12 control-section">
-      <div class="content-wrapper"></div>
-      <app-patient-partial
-        *ngIf="patientInformation && patientInformation.patient"
-        [patient]="patientInformation.patient"
-      >
-      </app-patient-partial>
+  <form #informationForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row mt-3">
+      <div class="col-lg-12 control-section">
+        <div class="content-wrapper"></div>
+
+        <app-patient-partial
+          *ngIf="patientInformation && patientInformation.patient"
+          [patient]="patientInformation.patient">
+        </app-patient-partial>
+
+      </div>
     </div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-      <b>Grossesse</b>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-      <ejs-dropdownlist
-        #test
-        id="pregnancyTypeDropDownList"
-        [dataSource]="pregnancyTypeData"
-        [value]="selectedPregnancyType"
-        placeholder="Select"
-        (change)="onPregnancyTypeDropDownListChange($event)"
-      ></ejs-dropdownlist>
-    </div>
-  </div>
-  <div class="row" *ngIf="selectedPregnancyType === 'Prématurité'">
-    <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-      <ejs-textbox
-        placeholder="Mois"
-        floatLabelType="Auto"
-        [ngModel]="patientInformation.pregnancy?.month"
-      ></ejs-textbox>
-    </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-      <ejs-textbox
-        placeholder="Semaine"
-        floatLabelType="Auto"
-        [ngModel]="patientInformation.pregnancy?.week"
-      ></ejs-textbox>
-    </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-      <ejs-textbox
-        placeholder="Jour"
-        floatLabelType="Auto"
-        [ngModel]="patientInformation.pregnancy?.day"
-      ></ejs-textbox>
-    </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3"></div>
-  </div>
-  <!--<div class="row mt-3">
-            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <b>Naissance</b>
-            </div>
-        </div>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Poids de naissance en gr." floatLabelType="Auto" [ngModel]="patientInformation.born.birthWeight"></ejs-textbox>
-        </div>
-        <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Apgar à 1 mn" floatLabelType="Auto" [ngModel]="patientInformation.born.apgar1mn"></ejs-textbox>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Apgar à 5 mn" floatLabelType="Auto" [ngModel]="patientInformation.born.apgar5mn"></ejs-textbox>
-        </div>
+    <div class="row mt-3">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <b>Grossesse</b>
+      </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Mois" floatLabelType="Auto" [ngModel]="patientInformation.pregnancy.month"></ejs-textbox>
+      <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+        <ejs-dropdownlist
+          name="pregnancyDropDown"
+          id="pregnancyTypeDropDownList"
+          [(ngModel)]="patientInformation.pregnancy.position"
+          floatLabelType="Auto"
+          [dataSource]="pregnancyTypeData"
+          [value]="selectedPregnancyType"
+          placeholder="Grossesse"
+          (change)="onPregnancyTypeDropDownListChange($event)"></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="row" *ngIf="selectedPregnancyType === 'Prématurité'">
+      <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+        <ejs-textbox
+          name="month"
+          placeholder="Mois"
+          floatLabelType="Auto"
+          [(ngModel)]="patientInformation.pregnancy.month"></ejs-textbox>
+      </div>
+      <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+        <ejs-textbox
+          name="week"
+          placeholder="Semaine"
+          floatLabelType="Auto"
+          [(ngModel)]="patientInformation.pregnancy.week"></ejs-textbox>
+      </div>
+      <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+        <ejs-textbox
+          name="day"
+          placeholder="Jour"
+          floatLabelType="Auto"
+          [(ngModel)]="patientInformation.pregnancy.day"></ejs-textbox>
+      </div>
+      <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+        <ejs-dropdownlist
+        name="position"
+        id="positionTypeDropDownList"
+        [(ngModel)]="patientInformation.pregnancy.position"
+        floatLabelType="Auto"
+        [dataSource]="positionTypeData"
+        [value]="selectedPositionType"
+        placeholder="Position"
+        (change)="onPositionTypeDropDownListChange($event)"></ejs-dropdownlist>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <b>Naissance</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+        <ejs-textbox name="birthWeight"
+        placeholder="Poids de naissance en gr." 
+        floatLabelType="Auto" 
+        [(ngModel)]="patientInformation.born.birthWeight"></ejs-textbox>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+        <ejs-textbox name="apgar1mn"
+        placeholder="Apgar à 1 mn" 
+        floatLabelType="Auto" 
+        [(ngModel)]="patientInformation.born.apgar1mn"></ejs-textbox>
         </div>
         <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Semaine" floatLabelType="Auto" [ngModel]="patientInformation.pregnancy.week"></ejs-textbox>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-            <ejs-textbox placeholder="Jour" floatLabelType="Auto" [ngModel]="patientInformation.pregnancy.day"></ejs-textbox>
+        <ejs-textbox name="apgar5mn"
+        placeholder="Apgar à 5 mn" 
+        floatLabelType="Auto" 
+        [(ngModel)]="patientInformation.born.apgar5mn"></ejs-textbox>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+        <ejs-dropdownlist
+        id="allaitementDropDownList"
+        name="allaitement"
+        [(ngModel)]="patientInformation.born.allaitement"
+        floatLabelType="Auto"
+        [dataSource]="allaitementData"
+        [value]="selectedAllaitement"
+        placeholder="Allaitement"
+        (change)="onAllaitementDropDownListChange($event)"></ejs-dropdownlist>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+        <ejs-textbox name="remarqueAllaitement"
+        placeholder="Semaine" 
+        floatLabelType="Auto" 
+        [(ngModel)]="patientInformation.born.remarqueAllaitement"></ejs-textbox>
+      </div>
+      <div class="col-xs-2 col-sm-2 col-lg-2 col-md-2">
+        <div class="e-float-input">
+          <ejs-checkbox name="cry"
+          label="Cri immédiat" 
+          [(ngModel)]="patientInformation.born.cry"></ejs-checkbox >
         </div>
-    </div>-->
+      </div>
+      <div class="col-xs-2 col-sm-2 col-lg-2 col-md-2">
+        <div class="e-float-input">
+          <ejs-checkbox name="cyanose"
+          label="Cyanose" 
+          [(ngModel)]="patientInformation.born.cyanose"></ejs-checkbox >
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <button ejs-button cssClass="e-primary">Register</button>
+  </form>
 </div>
