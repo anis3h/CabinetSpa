@@ -44,14 +44,12 @@
 </div>
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-    <!-- <ejs-textbox
-      name="dateOfBirth"
-      cssClass="e-outline"
-      placeholder="Date de Naissance"
-      floatLabelType="Auto"
-      [(ngModel)]="patient.dateOfBirth | date: 'yyyy-MM-dd'"
-      type="date"
-    >
-    </ejs-textbox> -->
+    <ejs-datepicker
+      name="dateOfBirth" 
+      cssClass="e-outline" 
+      placeholder="Date de Naissance" 
+      floatLabelType="Auto" 
+      [(ngModel)]="patient.dateOfBirth"
+      format='dd.MM.yyyy'></ejs-datepicker>
   </div>
 </div>

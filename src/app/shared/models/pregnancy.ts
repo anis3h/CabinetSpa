@@ -3,5 +3,5 @@ interface Pregnancy {
     month: number;
     week: number;
     day: number;
-    position: string;
+    typPosition: string;
   }

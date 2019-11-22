@@ -23,7 +23,8 @@ export class InformationsComponent implements OnInit {
 
   constructor(
     private informationsService: InformationsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -37,21 +38,24 @@ export class InformationsComponent implements OnInit {
     this.informationsService.getPatient(id).subscribe(
       async result => {
         this.patientInformation = result;
-        this.patientInformation.born = {} as Born;
-        this.patientInformation.pregnancy = {} as Pregnancy;
       },
       error => console.error(error)
     );
-
-    // this.informationsService.getPatient(id)
-    //   .subscribe(patient => this.patient = patient);
   }
 
   onSubmit(){
     var test = this.patientInformation;
     this.informationsService.updatePatient(this.patientInformation).subscribe(
-      () => console.log("patient gespeichert")
+      () => {
+        console.log("patient gespeichert");
+        this.goBack();
+      }
     );
+  }
+
+  goBack(): void {
+    // navigates backward one step in the browser's history stack using the Location service
+    this.location.back();
   }
 
   onPregnancyTypeDropDownListChange(e) {
@@ -63,6 +67,6 @@ export class InformationsComponent implements OnInit {
   }
 
   onAllaitementDropDownListChange(e){
-    this.selectedAllaitemen = e.value;
+    this.selectedAllaitemen = e.value; 
   }
 }

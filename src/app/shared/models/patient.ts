@@ -3,6 +3,7 @@ class Patient {
   fileNumber: number;
   name: string;
   firstName: string;
+  tel: string;
   adresse: string;
   dateOfBirth: Date;
   private _test: string;

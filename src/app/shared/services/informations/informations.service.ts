@@ -28,7 +28,7 @@ export class InformationsService {
   }
 
   updatePatient(patient: PatientInformation) : Observable<any> {
-    return this.http.post(this.informationsServiceUrl + 's', patient, this.httpOptions).pipe(
+    return this.http.post(this.informationsServiceUrl, patient, this.httpOptions).pipe(
       tap(_ => console.log(`updatePatient id=${patient.patient.id}`)),
       catchError(this.handleError<any>('updatePatient'))
     );
