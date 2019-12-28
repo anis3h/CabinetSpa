@@ -46,7 +46,7 @@ export class AppComponent {
 
     this.oauthService.responseType = "id_token token";
     this.oauthService.scope =
-      "openid email profile api://c39e1d04-10f1-4c56-985e-b9317d055e95/Patients";
+      "openid email profile api://c39e1d04-10f1-4c56-985e-b9317d055e95/access_as_user";
 
     this.oauthService.loginUrl =
       "https://login.microsoftonline.com/" +
@@ -100,7 +100,7 @@ export class AppComponent {
   public getMessage() {
     var test = this.oauthService.getAccessToken();
     var headers = new HttpHeaders({
-      Authorization: test
+      Authorization: `Bearer  ${test}`
     });
     this.httpClient
       .get(

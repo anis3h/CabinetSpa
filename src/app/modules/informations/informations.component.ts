@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
-
 import { InformationsService } from "../../shared/services/informations/informations.service";
 import { Identifiers } from "@angular/compiler";
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 
 @Component({
   selector: "app-informations",
@@ -12,14 +10,23 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
   styleUrls: ["./informations.component.scss"]
 })
 export class InformationsComponent implements OnInit {
-
   public patientInformation: PatientInformation;
-  public pregnancyTypeData: string[] = ['Aterm', 'Prématurité', 'Gemulaire', 'Triplé'];
-  public positionTypeData: string[] = ['Sommet', 'Siège'];
-  public allaitementData: string[] = ['Maternelle', 'Exclusif', 'Mixte', 'Artificiel'];
+  public pregnancyTypeData: string[] = [
+    "Aterm",
+    "Prématurité",
+    "Gemulaire",
+    "Triplé"
+  ];
+  public positionTypeData: string[] = ["Sommet", "Siège"];
+  public allaitementData: string[] = [
+    "Maternelle",
+    "Exclusif",
+    "Mixte",
+    "Artificiel"
+  ];
   public selectedPregnancyType: string;
   public selectedPositionType: string;
-  public selectedAllaitemen: string;
+  public selectedAllaitement: string;
 
   constructor(
     private informationsService: InformationsService,
@@ -27,7 +34,7 @@ export class InformationsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getPatient(); 
+    this.getPatient();
   }
 
   getPatient(): void {
@@ -47,11 +54,11 @@ export class InformationsComponent implements OnInit {
     //   .subscribe(patient => this.patient = patient);
   }
 
-  onSubmit(){
+  onSubmit() {
     var test = this.patientInformation;
-    this.informationsService.updatePatient(this.patientInformation).subscribe(
-      () => console.log("patient gespeichert")
-    );
+    this.informationsService
+      .updatePatient(this.patientInformation)
+      .subscribe(() => console.log("patient gespeichert"));
   }
 
   onPregnancyTypeDropDownListChange(e) {
@@ -62,7 +69,7 @@ export class InformationsComponent implements OnInit {
     this.selectedPositionType = e.value;
   }
 
-  onAllaitementDropDownListChange(e){
-    this.selectedAllaitemen = e.value;
+  onAllaitementDropDownListChange(e) {
+    this.selectedAllaitement = e.value;
   }
 }

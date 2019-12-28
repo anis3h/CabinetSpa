@@ -3,8 +3,8 @@
     <h2>Informations:</h2>
     <div><span>id: </span>{{ familyPatient.patient.id }}</div>
   </div> -->
-
-  <div>
+  <!--Partial Patient -->
+  <div class="row mt-3">
     <div class="col-lg-12 control-section">
       <div class="content-wrapper"></div>
       <app-patient-partial
@@ -13,4 +13,149 @@
       ></app-patient-partial>
     </div>
   </div>
+
+  <div class="row mt-3">
+    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+      <b>Fraternity</b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="fraternité"
+        placeholder="Fraternité"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.fraternity"
+      ></ejs-textbox>
+    </div>
+  </div>
+
+  <!-- father -->
+  <div class="row mt-3">
+    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+      <b>Père</b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="fatherName"
+        placeholder="Nom"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.father.name"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="fatherFirstName"
+        placeholder="Prénom"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.father.firstName"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="fatherProfession"
+        placeholder="Profession"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.father.profession"
+      >
+      </ejs-textbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-lg-8 col-md-8">
+      <ejs-textbox
+        name="fatherAdresse"
+        placeholder="Adresse"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.father.adresse"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="fatherTel"
+        placeholder="Tel"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.father.tel"
+      >
+      </ejs-textbox>
+    </div>
+  </div>
+  <!-- mother -->
+  <div class="row mt-3">
+    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+      <b>Mère</b>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="motherName"
+        placeholder="Nom"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.mother.name"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="motherFirstName"
+        placeholder="Prénom"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.mother.firstName"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="motherProfession"
+        placeholder="Profession"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.mother.profession"
+      >
+      </ejs-textbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-lg-8 col-md-8">
+      <ejs-textbox
+        name="motherAdresse"
+        placeholder="Adresse"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.mother.adresse"
+      >
+      </ejs-textbox>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+      <ejs-textbox
+        name="motherTel"
+        placeholder="Tel"
+        floatLabelType="Auto"
+        [(ngModel)]="familyPatient.mother.tel"
+      >
+      </ejs-textbox>
+    </div>
+  </div>
+<div>
+  <ejsgrid id="GridSiblings" locale="fr" dataSource="@Model.Patient.Siblings.ToList()" toolbar=toolbarItems allowPaging="false" allowSorting="true" allowFiltering="false" created="girdSiblingsOnCreated">
+      @*<e-data-manager json="@Model.Patient.Siblings.ToList().ToArray<object>()" url="/Family/Index" insertUrl="/Family/Insert" updateUrl="/Family/Update" removeUrl="/Family/Delete" adaptor="remoteSaveAdaptor"></e-data-manager>*@
+      <e-grid-editSettings allowAdding="true" allowDeleting="true" mode="Dialog" showConfirmDialog="true" showDeleteConfirmDialog="true"></e-grid-editSettings>
+      <e-grid-selectionsettings type="Single" mode="Row"></e-grid-selectionsettings>
+      <e-grid-pagesettings pageCount="4" pageSizes="true"></e-grid-pagesettings>
+      <e-grid-columns>
+          <e-grid-column field="Health" headerTemplate="#headerHealth" headerText="Health" width="30" textAlign="Center" type="checkbox"></e-grid-column>
+          <e-grid-column field="Id" headerText="Sibling ID" visible="false" isPrimaryKey="true" textAlign="Right" validationRules="@(new { required = true })" width="100" type="number"></e-grid-column>
+          <e-grid-column field="Type" headerText="Type" visible="false" textAlign="Right" validationRules="@(new { required = true })" width="100"></e-grid-column>
+          <e-grid-column field="SiblingType" headerText="Fraternité" textAlign="Center" width="120"></e-grid-column>
+          <e-grid-column field="DateOfBirth" headerText="Date de Naissance" textAlign="Center" width="120" editType="datepickeredit" format="yMd"></e-grid-column>
+          <e-grid-column field="Information" headerText="Information" textAlign="Center" width="120"></e-grid-column>
+
+      </e-grid-columns>
+  </ejsgrid>
+</div>
 </div>

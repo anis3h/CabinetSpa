@@ -3,4 +3,5 @@ interface FamilyPatient {
   father: Father;
   mother: Mother;
   siblings: Sibling[];
+  fraternity: number;
 }

@@ -2,14 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
-
 import { Configuration } from "src/app/configurations/app.constants";
 
 @Injectable({
   providedIn: "root"
 })
 export class InformationsService {
-
   private informationsServiceUrl;
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -23,15 +21,21 @@ export class InformationsService {
     const url = `${this.informationsServiceUrl}/${id}`;
     return this.http.get<PatientInformation>(url).pipe(
       tap(_ => console.log(`getPatientWithInformation id=${id}`)),
-      catchError(this.handleError<PatientInformation>(`getPatientWithInformation id=${id}`))
+      catchError(
+        this.handleError<PatientInformation>(
+          `getPatientWithInformation id=${id}`
+        )
+      )
     );
   }
 
-  updatePatient(patient: PatientInformation) : Observable<any> {
-    return this.http.post(this.informationsServiceUrl + 's', patient, this.httpOptions).pipe(
-      tap(_ => console.log(`updatePatient id=${patient.patient.id}`)),
-      catchError(this.handleError<any>('updatePatient'))
-    );
+  updatePatient(patient: PatientInformation): Observable<any> {
+    return this.http
+      .post(this.informationsServiceUrl + "s", patient, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`updatePatient id=${patient.patient.id}`)),
+        catchError(this.handleError<any>("updatePatient"))
+      );
   }
 
   /**

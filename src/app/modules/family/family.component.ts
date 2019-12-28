@@ -12,10 +12,8 @@ export class FamilyComponent implements OnInit {
 
   constructor(
     private familyService: FamilyService,
-    private route: ActivatedRoute // @Inject("sourceFiles") private sourceFiles: any
-  ) {
-    // sourceFiles.files = ["family.component.scss"];
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.getPatient();

@@ -1,7 +1,7 @@
 interface Pregnancy {
-    typPregnancy: string;
-    month: number;
-    week: number;
-    day: number;
-    position: string;
-  }
+  typPregnancy: string;
+  month: number;
+  week: number;
+  day: number;
+  position: string;
+}
