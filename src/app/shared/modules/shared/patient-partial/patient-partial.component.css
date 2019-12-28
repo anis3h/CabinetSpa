@@ -62,6 +62,10 @@ ejs-textbox .e-outline.e-float-input.e-control-wrapper {
   margin-top: 0;
 }
 
+ejs-textbox[readonly] {
+  color: red;
+}
+
 .fabric .row.material2,
 .bootstrap .row.material2,
 .bootstrap4 .row.material2,
@@ -72,3 +76,4 @@ ejs-textbox .e-outline.e-float-input.e-control-wrapper {
 #description td {
   vertical-align: top;
 }
+

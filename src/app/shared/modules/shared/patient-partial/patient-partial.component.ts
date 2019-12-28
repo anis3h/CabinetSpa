@@ -5,13 +5,13 @@ import { Component, OnInit, Input } from "@angular/core";
   templateUrl: "./patient-partial.component.html",
   styleUrls: ["./patient-partial.component.css"]
 })
+
 export class PatientPartialComponent implements OnInit {
+
   @Input() patient: Patient;
   patientTest: Date;
   constructor() {}
 
   ngOnInit() {
-    //this.patientTest = this.patient;
-    this.patientTest = this.patient.test;
   }
 }

@@ -11,6 +11,31 @@
 
       </div>
     </div>
+
+    <div class="row mt-3">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <b>Informations de contact</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <ejs-textbox
+          name="adresse"
+          placeholder="Adresse"
+          floatLabelType="Auto"
+          [(ngModel)]="patientInformation.patient.adresse">
+        </ejs-textbox>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <ejs-textbox
+          name="telefon"
+          placeholder="Téléphone"
+          floatLabelType="Auto"
+          [(ngModel)]="patientInformation.patient.tel">
+        </ejs-textbox>
+      </div>
+    </div>
+
     <div class="row mt-3">
       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
         <b>Grossesse</b>
@@ -21,7 +46,7 @@
         <ejs-dropdownlist
           name="pregnancyDropDown"
           id="pregnancyTypeDropDownList"
-          [(ngModel)]="patientInformation.pregnancy.position"
+          [(ngModel)]="patientInformation.pregnancy.typPregnancy"
           floatLabelType="Auto"
           [dataSource]="pregnancyTypeData"
           [value]="selectedPregnancyType"
@@ -55,7 +80,7 @@
         <ejs-dropdownlist
         name="position"
         id="positionTypeDropDownList"
-        [(ngModel)]="patientInformation.pregnancy.position"
+        [(ngModel)]="patientInformation.pregnancy.typPosition"
         floatLabelType="Auto"
         [dataSource]="positionTypeData"
         [value]="selectedPositionType"
@@ -123,6 +148,8 @@
       </div>
     </div>
     <hr/>
-    <button ejs-button cssClass="e-primary">Register</button>
+    <div class="row justify-content-end" style="padding-right: 15px;">
+        <button ejs-button cssClass="e-primary">Register</button>
+    </div>
   </form>
 </div>

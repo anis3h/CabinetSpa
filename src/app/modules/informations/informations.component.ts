@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 import { InformationsService } from "../../shared/services/informations/informations.service";
 import { Identifiers } from "@angular/compiler";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
@@ -27,10 +28,12 @@ export class InformationsComponent implements OnInit {
   public selectedPregnancyType: string;
   public selectedPositionType: string;
   public selectedAllaitement: string;
+  selectedAllaitemen: any;
 
   constructor(
     private informationsService: InformationsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -44,21 +47,24 @@ export class InformationsComponent implements OnInit {
     this.informationsService.getPatient(id).subscribe(
       async result => {
         this.patientInformation = result;
-        this.patientInformation.born = {} as Born;
-        this.patientInformation.pregnancy = {} as Pregnancy;
       },
       error => console.error(error)
     );
-
-    // this.informationsService.getPatient(id)
-    //   .subscribe(patient => this.patient = patient);
   }
 
   onSubmit() {
     var test = this.patientInformation;
     this.informationsService
       .updatePatient(this.patientInformation)
-      .subscribe(() => console.log("patient gespeichert"));
+      .subscribe(() => {
+        console.log("patient gespeichert");
+        this.goBack();
+      });
+  }
+
+  goBack(): void {
+    // navigates backward one step in the browser's history stack using the Location service
+    this.location.back();
   }
 
   onPregnancyTypeDropDownListChange(e) {
@@ -70,6 +76,6 @@ export class InformationsComponent implements OnInit {
   }
 
   onAllaitementDropDownListChange(e) {
-    this.selectedAllaitement = e.value;
+    this.selectedAllaitemen = e.value;
   }
 }
