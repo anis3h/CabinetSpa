@@ -7,4 +7,5 @@ class Patient {
   adresse: string;
   dateOfBirth: Date;
   age: Age;
+  fraternity: number;
 }

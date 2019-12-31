@@ -1,6 +1,11 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FamilyService } from "src/app/shared/services/family/family.service";
+import {
+  EditSettingsModel,
+  ToolbarItems,
+  GridComponent
+} from "@syncfusion/ej2-angular-grids";
 
 @Component({
   selector: "app-family",
@@ -8,15 +13,34 @@ import { FamilyService } from "src/app/shared/services/family/family.service";
   styleUrls: ["./family.component.css"]
 })
 export class FamilyComponent implements OnInit {
+  public pageSettings: Object;
+  // tslint:disable-next-line:ban-types
+  public selectOptions: Object;
+  public editSettings: EditSettingsModel;
+  public toolbar: ToolbarItems[] | Object;
+  public initialPage: Object;
+  private apiUrl: string = "https://localhost:44393";
+  locale: string;
   public familyPatient: FamilyPatient;
+  @ViewChild("gridSiblings", { static: false }) public grid: GridComponent;
 
   constructor(
     private familyService: FamilyService,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getPatient();
+
+    // await this.loadPatients();
+    this.initialPage = { pageSize: 12, pageCount: 4 };
+    this.editSettings = {
+      allowEditing: true,
+      allowAdding: true,
+      allowDeleting: true,
+      mode: "Dialog"
+    };
+    this.toolbar = ["Add", "Edit", "Delete", "Update", "Cancel"];
   }
 
   getPatient(): void {
@@ -63,5 +87,9 @@ export class FamilyComponent implements OnInit {
     setTimeout(() => {
       ele.classList.remove("e-input-btn-ripple");
     }, 500);
+  }
+  public registerClick(test: any) {
+    // ToDo Call update
+    // update: this.familyPatient.siblings
   }
 }
