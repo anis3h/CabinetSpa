@@ -6,4 +6,5 @@ interface Mother {
   name: string;
   tel: string;
   profession: string;
+  patientParentId: number;
 }

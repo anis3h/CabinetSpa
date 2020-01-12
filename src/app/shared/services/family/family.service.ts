@@ -17,6 +17,18 @@ export class FamilyService {
     this.familyServiceUrl = configuration.familyService;
   }
 
+  updateFamilyPatient(familyPatient: FamilyPatient): Observable<FamilyPatient> {
+    const url = `${this.familyServiceUrl}`;
+    return this.http.post<FamilyPatient>(url, familyPatient).pipe(
+      tap(_ => console.log(`getFamilyPatient`)),
+      catchError(
+        this.handleError<FamilyPatient>(
+          `getFamilyPatient id=${familyPatient.patient.id}`
+        )
+      )
+    );
+  }
+
   getFamilyPatient(id: number): Observable<FamilyPatient> {
     const url = `${this.familyServiceUrl}/${id}`;
     return this.http.get<FamilyPatient>(url).pipe(

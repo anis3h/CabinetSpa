@@ -6,6 +6,7 @@ import {
   ToolbarItems,
   GridComponent
 } from "@syncfusion/ej2-angular-grids";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-family",
@@ -89,7 +90,13 @@ export class FamilyComponent implements OnInit {
     }, 500);
   }
   public registerClick(test: any) {
-    // ToDo Call update
+    this.familyService.updateFamilyPatient(this.familyPatient).subscribe(
+      async result => {
+        this.familyPatient = result;
+      },
+      error => console.error(error)
+    );
+
     // update: this.familyPatient.siblings
   }
 }
