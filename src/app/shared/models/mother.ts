@@ -7,4 +7,13 @@ interface Mother {
   tel: string;
   profession: string;
   patientParentId: number;
+  // constructor() {
+  //   this.maidenName = "";
+  //   this.adresse = "";
+  //   this.firstName = "";
+  //   this.tel = "";
+  //   this.profession = "";
+  //   this.adresse = "";
+  //   this.patientParentId = 0;
+  // }
 }
