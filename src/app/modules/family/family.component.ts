@@ -51,9 +51,9 @@ export class FamilyComponent implements OnInit {
     this.familyService.getFamilyPatient(id).subscribe(
       async result => {
         this.familyPatient = result;
-        if (!this.familyPatient.father) {
-          this.familyPatient.father = new Father();
-        }
+        // if (this.familyPatient.father == null) {
+        //   this.familyPatient.father = new Father();
+        // }
       },
       error => console.error(error)
     );

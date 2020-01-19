@@ -1,15 +1,8 @@
-interface FamilyPatient {
+class FamilyPatient {
   patient: Patient;
-  father: Father;
-
-  // get father(): Father {
-  //   return this._father;
-  // }
-  // set father(value: Father) {
-  //   this._father = value;
-  // }
+  father: Father = new Father();
 
   mother: Mother;
   siblings: Sibling[];
-  // constructor() {}
+  constructor() {}
 }

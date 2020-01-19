@@ -17,7 +17,7 @@
         <b>Père</b>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="familyPatient && familyPatient.father">
       <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
         <ejs-textbox
           name="fatherName"
@@ -46,7 +46,7 @@
         </ejs-textbox>
       </div>
     </div>
-    <div class="row" *ngIf="familyPatient && familyPatient.father">
+    <div class="row" *ngIf="familyPatient && familyPatient.father != null">
       <div class="col-xs-8 col-sm-8 col-lg-8 col-md-8">
         <ejs-textbox
           name="fatherAdresse"
