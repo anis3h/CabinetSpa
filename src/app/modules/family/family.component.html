@@ -46,7 +46,7 @@
         </ejs-textbox>
       </div>
     </div>
-    <div class="row" *ngIf="familyPatient && familyPatient.father != null">
+    <div class="row" *ngIf="familyPatient && familyPatient.father">
       <div class="col-xs-8 col-sm-8 col-lg-8 col-md-8">
         <ejs-textbox
           name="fatherAdresse"
@@ -178,6 +178,8 @@
         ></e-column> -->
           <e-column
             field="siblingType"
+            editType="dropdownedit"
+            [edit]="syblingTypes"
             headerText="Fraternité"
             textAlign="Center"
             width="120"

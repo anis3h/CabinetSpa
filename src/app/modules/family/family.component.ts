@@ -4,7 +4,8 @@ import { FamilyService } from "src/app/shared/services/family/family.service";
 import {
   EditSettingsModel,
   ToolbarItems,
-  GridComponent
+  GridComponent,
+  IEditCell
 } from "@syncfusion/ej2-angular-grids";
 import { Location } from "@angular/common";
 
@@ -23,6 +24,8 @@ export class FamilyComponent implements OnInit {
   private apiUrl: string = "https://localhost:44393";
   locale: string;
   public familyPatient: FamilyPatient;
+  public syblingTypes: IEditCell;
+
   @ViewChild("gridSiblings", { static: false }) public grid: GridComponent;
 
   constructor(
@@ -42,6 +45,7 @@ export class FamilyComponent implements OnInit {
       mode: "Dialog"
     };
     this.toolbar = ["Add", "Edit", "Delete", "Update", "Cancel"];
+    this.syblingTypes = { params: { value: "Sister" } };
   }
 
   getPatient(): void {
