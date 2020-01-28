@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class Configuration {
   public server = "https://localhost:44393";
-  public apiUrl = "/api";
+  public apiUrl = "/api/v1";
   public serverWithApiUrl = this.server + this.apiUrl;
   public patientServer = this.server + this.apiUrl + "/Patient/Patients";
 

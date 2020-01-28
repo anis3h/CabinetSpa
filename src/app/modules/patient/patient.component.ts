@@ -33,7 +33,7 @@ export class PatientComponent implements OnInit {
   @ViewChild("grid", { static: true })
   public grid: GridComponent;
   private patient: any;
-  constructor(http: HttpClient, private router: Router) {}
+  constructor(http: HttpClient, private router: Router) { }
 
   async ngOnInit() {
     // await this.loadPatients();
@@ -66,10 +66,10 @@ export class PatientComponent implements OnInit {
     ];
 
     this.data = new DataManager({
-      url: this.apiUrl + "/api/Patient/Patients",
-      insertUrl: this.apiUrl + "/api/Patient/Insert",
-      removeUrl: this.apiUrl + "/api/Patient/Delete",
-      updateUrl: this.apiUrl + "/api/Patient/Update",
+      url: this.apiUrl + "/api/v1/Patient/Patients",
+      insertUrl: this.apiUrl + "/api/v1/Patient/Insert",
+      removeUrl: this.apiUrl + "/api/v1/Patient/Delete",
+      updateUrl: this.apiUrl + "/api/v1/Patient/Update",
       adaptor: new UrlAdaptor()
     });
   }
