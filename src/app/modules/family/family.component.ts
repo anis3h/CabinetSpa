@@ -8,6 +8,7 @@ import {
   IEditCell
 } from "@syncfusion/ej2-angular-grids";
 import { Location } from "@angular/common";
+import { dateOfBirthRule } from "../../shared/validation/customValidation"
 
 @Component({
   selector: "app-family",
@@ -15,6 +16,7 @@ import { Location } from "@angular/common";
   styleUrls: ["./family.component.css"]
 })
 export class FamilyComponent implements OnInit {
+
   public pageSettings: Object;
   // tslint:disable-next-line:ban-types
   public selectOptions: Object;
@@ -27,6 +29,9 @@ export class FamilyComponent implements OnInit {
   public syblingTypes: IEditCell;
 
   @ViewChild("gridSiblings", { static: false }) public grid: GridComponent;
+
+  // Custom Validation for dateOfBirth
+  public dateOfBirthRule: Object;
 
   constructor(
     private familyService: FamilyService,
@@ -46,6 +51,9 @@ export class FamilyComponent implements OnInit {
     };
     this.toolbar = ["Add", "Edit", "Delete", "Update", "Cancel"];
     this.syblingTypes = { params: { value: "Sister" } };
+
+    // validation rule
+    this.dateOfBirthRule = dateOfBirthRule;
   }
 
   getPatient(): void {

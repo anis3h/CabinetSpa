@@ -11,6 +11,7 @@ import {
   RowSelectEventArgs
 } from "@syncfusion/ej2-angular-grids";
 import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
+import { dateOfBirthRule } from "../../shared/validation/customValidation"
 
 // ToDO Patient Module anlegen
 @Component({
@@ -34,6 +35,9 @@ export class PatientComponent implements OnInit {
   public grid: GridComponent;
   private patient: any;
   constructor(http: HttpClient, private router: Router) { }
+
+  // Custom Validation for dateOfBirth
+  public dateOfBirthRule: Object;
 
   async ngOnInit() {
     // await this.loadPatients();
@@ -72,8 +76,13 @@ export class PatientComponent implements OnInit {
       updateUrl: this.apiUrl + "/api/v1/Patient/Update",
       adaptor: new UrlAdaptor()
     });
+
+    // validation rule
+    this.dateOfBirthRule = dateOfBirthRule; 
   }
+
   toolbarClickPatient(e) {
+
     if (e.item.id === "editInformations") {
       var rowInformation = this.grid.getSelectedRecords();
       var patient: any = rowInformation[0];
