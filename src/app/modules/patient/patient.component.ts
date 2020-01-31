@@ -34,7 +34,12 @@ export class PatientComponent implements OnInit {
   @ViewChild("grid", { static: true })
   public grid: GridComponent;
   private patient: any;
-  constructor(http: HttpClient, private router: Router) { }
+  private configuration: Configuration;
+
+  constructor(http: HttpClient, private router: Router, configuration: Configuration) {
+    this.configuration = configuration;
+    this.apiUrl = configuration.server;
+  }
 
   // Custom Validation for dateOfBirth
   public dateOfBirthRule: Object;
@@ -70,10 +75,10 @@ export class PatientComponent implements OnInit {
     ];
 
     this.data = new DataManager({
-      url: this.apiUrl + "/api/v1/Patient/Patients",
-      insertUrl: this.apiUrl + "/api/v1/Patient/Insert",
-      removeUrl: this.apiUrl + "/api/v1/Patient/Delete",
-      updateUrl: this.apiUrl + "/api/v1/Patient/Update",
+      url: this.configuration.serverWithApiUrl + "/Patient/Patients",
+      insertUrl: this.configuration.serverWithApiUrl + "/Patient/Insert",
+      removeUrl: this.configuration.serverWithApiUrl + "/Patient/Delete",
+      updateUrl: this.configuration.serverWithApiUrl + "/Patient/Update",
       adaptor: new UrlAdaptor()
     });
 

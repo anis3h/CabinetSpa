@@ -23,7 +23,6 @@ export class FamilyComponent implements OnInit {
   public editSettings: EditSettingsModel;
   public toolbar: ToolbarItems[] | Object;
   public initialPage: Object;
-  private apiUrl: string = "https://localhost:44393";
   locale: string;
   public familyPatient: FamilyPatient;
   public syblingTypes: IEditCell;
@@ -36,7 +35,7 @@ export class FamilyComponent implements OnInit {
   constructor(
     private familyService: FamilyService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.getPatient();
@@ -63,9 +62,6 @@ export class FamilyComponent implements OnInit {
     this.familyService.getFamilyPatient(id).subscribe(
       async result => {
         this.familyPatient = result;
-        // if (this.familyPatient.father == null) {
-        //   this.familyPatient.father = new Father();
-        // }
       },
       error => console.error(error)
     );
@@ -104,6 +100,7 @@ export class FamilyComponent implements OnInit {
       ele.classList.remove("e-input-btn-ripple");
     }, 500);
   }
+
   public registerClick(test: any) {
     this.familyService.updateFamilyPatient(this.familyPatient).subscribe(
       async result => {
