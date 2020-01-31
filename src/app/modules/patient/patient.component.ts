@@ -12,6 +12,7 @@ import {
 } from "@syncfusion/ej2-angular-grids";
 import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
 import { dateOfBirthRule } from "../../shared/validation/customValidation"
+import { Configuration } from 'src/app/configurations/app.constants';
 
 // ToDO Patient Module anlegen
 @Component({
