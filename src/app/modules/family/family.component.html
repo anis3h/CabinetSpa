@@ -104,11 +104,28 @@
           validationRules="@(new { required = true })"
           width="100"
         ></e-column> -->
-          <e-column field="siblingType" editType="dropdownedit" [edit]="syblingTypes" headerText="Fraternité"
-            textAlign="Center" width="120"></e-column>
-          <e-column field="dateOfBirth" headerText="Date de Naissance" textAlign="Center" width="120"
-            editType="datepickeredit"></e-column>
-          <e-column field="information" headerText="Information" textAlign="Center" width="120"></e-column>
+          <e-column
+            field="siblingType"
+            editType="dropdownedit"
+            [edit]="syblingTypes"
+            headerText="Fraternité"
+            textAlign="Center"
+            width="120"
+          ></e-column>
+          <e-column
+            field="dateOfBirth"
+            headerText="Date de Naissance"
+            textAlign="Center"
+            width="120"
+            editType="datepickeredit"
+            [validationRules]='dateOfBirthRule'    
+          ></e-column>
+          <e-column
+            field="information"
+            headerText="Information"
+            textAlign="Center"
+            width="120"
+          ></e-column>
         </e-columns>
       </ejs-grid>
     </div>
