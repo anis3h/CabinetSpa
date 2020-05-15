@@ -4,5 +4,5 @@ class FamilyPatient {
 
   mother: Mother;
   siblings: Sibling[];
-  constructor() {}
+  constructor() { }
 }

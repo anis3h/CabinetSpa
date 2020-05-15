@@ -28,7 +28,6 @@ export class FamilyComponent implements OnInit {
   public syblingTypes: IEditCell;
 
   @ViewChild("gridSiblings", { static: false }) public grid: GridComponent;
-
   // Custom Validation for dateOfBirth
   public dateOfBirthRule: Object;
 
