@@ -1,22 +1,9 @@
 import { Component } from "@angular/core";
-import { AuthConfig, OAuthService, OAuthErrorEvent } from "angular-oauth2-oidc";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { SignatureValidationHandler } from "./signature-validation-handler";
 
 /* A private proxy server is required b/c ADFS and Azure AD do not support CORS */
 export const PRIVATE_PROXY_SERVER: string = "localhost:4200";
 export const TENANT_GUID: string = "1b714369-df05-4aa1-abc6-cee6fa19a23a";
-
-export const authConfig: AuthConfig = {
-  // issuer: "https://login.microsoftonline.com/" + TENANT_GUID + "/v2.0",
-  // //redirectUri: window.location.origin + "/oidc-azure",
-  // redirectUri: window.location.origin,
-  // requestAccessToken: true,
-  // logoutUrl: "http://localhost:4200",
-  // showDebugInformation: true,
-  // clientId: "ec3be22e-cde0-4779-b8b7-7b9b89d33c54",
-  // strictDiscoveryDocumentValidation: false
-};
 
 @Component({
   selector: "app-root",
@@ -29,7 +16,6 @@ export class AppComponent {
   http: any;
   constructor(
     private httpClient: HttpClient,
-    private oauthService: OAuthService
   ) {
     // this.oauthService.configure(authConfig);
     // this.oauthService.tokenValidationHandler = new SignatureValidationHandler();
