@@ -10,10 +10,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es6",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "target": "es5",
+    "paths": {
+      "jszip": [
+        "./node_modules/jszip/dist/jszip.js"
+      ]
+    },
     "lib": [
       "es2018",
       "dom"

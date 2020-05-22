@@ -1,4 +1,4 @@
-class Patient {
+export interface Patient {
   id: number;
   fileNumber: number;
   name: string;

@@ -1,4 +1,4 @@
-class Father {
+export class Father {
   id: number;
   adresse: string;
   firstName: string;
