@@ -9,6 +9,7 @@ import {
 } from "@syncfusion/ej2-angular-grids";
 import { Location } from "@angular/common";
 import { dateOfBirthRule } from "../../shared/validation/customValidation"
+import { FamilyPatient } from 'src/app/shared/models/family-patient';
 
 @Component({
   selector: "app-family",

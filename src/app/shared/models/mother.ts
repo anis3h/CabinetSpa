@@ -1,4 +1,4 @@
-interface Mother {
+export class Mother {
   id: number;
   maidenName: string;
   adresse: string;

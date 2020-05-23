@@ -1,4 +1,6 @@
-export interface Patient {
+import { Age } from './age';
+
+export class Patient {
   id: number;
   fileNumber: number;
   name: string;

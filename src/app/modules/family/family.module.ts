@@ -16,6 +16,7 @@ import {
   RowSelectEventArgs
 } from "@syncfusion/ej2-angular-grids";
 import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
+import { FamilyService } from 'src/app/shared/services/family/family.service';
 
 @NgModule({
   declarations: [FamilyComponent],
@@ -27,6 +28,9 @@ import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
     ButtonModule,
     FormsModule,
     GridModule
+  ],
+  providers: [
+    FamilyService
   ]
 })
-export class FamilyModule {}
+export class FamilyModule { }

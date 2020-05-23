@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Configuration } from "src/app/configurations/app.constants";
 import { Observable, of } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
+import { FamilyPatient } from '../../models/family-patient';
 
 @Injectable({
   providedIn: "root"

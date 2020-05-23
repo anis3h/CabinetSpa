@@ -1,6 +1,6 @@
-interface Age {
-    years: number;
-    months: number;
-    days: number;
-    fullAge: string;
-  }
+export class Age {
+  years: number;
+  months: number;
+  days: number;
+  fullAge: string;
+}
