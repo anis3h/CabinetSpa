@@ -16,7 +16,6 @@ import {
   FilterService,
   GroupService
 } from "@syncfusion/ej2-angular-grids";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DashboardModule } from "./modules/dashboard/dashboard.module";
 import { InformationsModule } from "./modules/informations/informations.module";
 import { ScheduleModule } from "./modules/schedule/schedule.module";
@@ -34,8 +33,6 @@ import { ExtendDatePipe } from "./modules/patient/extendedDatePipe";
 import { FamilyModule } from "./modules/family/family.module";
 import { SharedModule } from "./shared/modules/shared/shared.module";
 
-import { OAuthModule } from "angular-oauth2-oidc";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +47,6 @@ import { OAuthModule } from "angular-oauth2-oidc";
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
-    FontAwesomeModule,
     AppRoutingModule,
     DashboardModule,
     InformationsModule,
@@ -62,7 +58,6 @@ import { OAuthModule } from "angular-oauth2-oidc";
     GridModule,
     TextBoxModule,
     SharedModule,
-    OAuthModule.forRoot()
   ],
   exports: [],
   providers: [
@@ -78,6 +73,6 @@ import { OAuthModule } from "angular-oauth2-oidc";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {}
+  constructor() { }
 }
-export function HttpLoaderFactory(http: HttpClient) {}
+export function HttpLoaderFactory(http: HttpClient) { }

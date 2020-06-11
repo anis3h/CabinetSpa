@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Configuration } from 'src/app/configurations/app.constants';
+import { Patient } from '../models/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ import { Configuration } from 'src/app/configurations/app.constants';
 export class PatientService {
 
   constructor(private http: HttpClient, configuration: Configuration) {
-     this.urlPatientService = configuration.patientServer;
+    this.urlPatientService = configuration.patientServer;
   }
 
   private urlPatientService: string;
 
-    // Http Headers
+  // Http Headers
   // httpOptions = {
   //     headers: new HttpHeaders({
   //       'Content-Type': 'application/json'
@@ -26,10 +27,10 @@ export class PatientService {
   // GET
   GetPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.urlPatientService)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
   }
 
   // add {
@@ -80,16 +81,16 @@ export class PatientService {
 
   // Error handling
   errorHandl(error) {
-     let errorMessage = '';
-     if(error.error instanceof ErrorEvent) {
-       // Get client-side error
-       errorMessage = error.error.message;
-     } else {
-       // Get server-side error
-       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-     }
-     console.log(errorMessage);
-     return throwError(errorMessage);
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

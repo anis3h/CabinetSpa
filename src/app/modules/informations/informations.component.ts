@@ -4,6 +4,7 @@ import { Location } from "@angular/common";
 import { InformationsService } from "../../shared/services/informations/informations.service";
 import { Identifiers } from "@angular/compiler";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
+import { PatientInformation } from 'src/app/shared/models/patient-information';
 
 @Component({
   selector: "app-informations",
@@ -34,7 +35,7 @@ export class InformationsComponent implements OnInit {
     private informationsService: InformationsService,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getPatient();

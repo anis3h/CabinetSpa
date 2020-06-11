@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Patient } from 'src/app/shared/models/patient';
 
 @Component({
   selector: "app-patient-partial",
@@ -10,7 +11,7 @@ export class PatientPartialComponent implements OnInit {
 
   @Input() patient: Patient;
   patientTest: Date;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
   }

@@ -7,6 +7,7 @@ import { TextBoxModule } from "@syncfusion/ej2-angular-inputs";
 import { CheckBoxModule, ButtonModule } from "@syncfusion/ej2-angular-buttons";
 
 import { InformationsComponent } from "./informations.component";
+import { InformationsService } from 'src/app/shared/services/informations/informations.service';
 
 @NgModule({
   declarations: [InformationsComponent],
@@ -18,6 +19,9 @@ import { InformationsComponent } from "./informations.component";
     TextBoxModule,
     CheckBoxModule,
     ButtonModule
+  ],
+  providers: [
+    InformationsService
   ]
 })
-export class InformationsModule {}
+export class InformationsModule { }
